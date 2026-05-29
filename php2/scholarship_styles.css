@@ -1,0 +1,213 @@
+/* ============================================
+   scholarship_styles.css
+   Shared stylesheet for scholarship form pages
+   ============================================ */
+
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700&display=swap');
+
+/* --- CSS Variables (easy to change colors in one place!) --- */
+:root {
+  --primary-color: #2c6fad;       /* Main blue */
+  --primary-dark: #1a4f80;        /* Darker blue for hover states */
+  --accent-color: #f0a500;        /* Gold accent */
+  --background-color: #f0f4f8;    /* Light gray-blue page background */
+  --container-bg: #ffffff;        /* White card background */
+  --text-color: #2d3748;          /* Dark gray for body text */
+  --label-color: #4a5568;         /* Slightly lighter for labels */
+  --border-color: #cbd5e0;        /* Light border for inputs */
+  --border-focus: #2c6fad;        /* Blue border when input is focused */
+  --success-color: #276749;       /* Dark green for success message text */
+  --success-bg: #c6f6d5;          /* Light green for success message background */
+  --error-color: #c53030;         /* Red for error states */
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.10); /* Soft drop shadow */
+  --radius: 8px;                  /* Rounded corners */
+}
+
+/* --- Basic Reset --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Body & Page Layout --- */
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px;
+}
+
+/* --- Main Card Container --- */
+.container {
+  background-color: var(--container-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 40px 48px;
+  width: 100%;
+  max-width: 500px;
+
+  /* Top colored accent bar */
+  border-top: 5px solid var(--accent-color);
+}
+
+/* --- Page Headings --- */
+h2, h3 {
+  font-family: 'Merriweather', serif;
+  color: var(--primary-color);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* --- Form Layout --- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* --- Labels --- */
+label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--label-color);
+  margin-top: 12px;
+  display: block;
+}
+
+/* --- Text & Email Inputs --- */
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius);
+  color: var(--text-color);
+  background-color: #f7fafc;
+  margin-top: 4px;
+
+  /* Smooth transition when focused */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Highlight input when the user clicks into it */
+input[type="text"]:focus,
+input[type="email"]:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(44, 111, 173, 0.15);
+  background-color: #fff;
+}
+
+/* --- Buttons Row --- */
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* --- Reset Button --- */
+input[type="reset"] {
+  flex: 1;
+  padding: 11px;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: #fff;
+  color: var(--label-color);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+input[type="reset"]:hover {
+  background-color: #edf2f7;
+  border-color: #a0aec0;
+}
+
+/* --- Submit Button --- */
+input[type="submit"] {
+  flex: 2;
+  padding: 11px;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--primary-color);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Slight press effect when clicked */
+input[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* --- Success Message (process_scholarship.php) --- */
+.message {
+  background-color: var(--success-bg);
+  color: var(--success-color);
+  border: 1px solid #9ae6b4;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.message h3 {
+  color: var(--success-color);
+  font-size: 1.05rem;
+  margin-bottom: 0;
+}
+
+/* --- Back Link (optional, see suggestions below) --- */
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: var(--primary-color);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Required field note --- */
+.required-note {
+  font-size: 0.8rem;
+  color: #718096;
+  text-align: right;
+  margin-bottom: 4px;
+}
+
+.required-note span {
+  color: var(--error-color);
+}
+
+/* --- Responsive: smaller screens --- */
+@media (max-width: 480px) {
+  .container {
+    padding: 28px 20px;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+}
